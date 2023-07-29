@@ -138,13 +138,13 @@ only showing top 20 rows
 start_time = time.time()
 
 spark.sql("""
-    SELECT
+  SELECT
     view,
     ROUND(AVG(price),2) AS average_price
-    FROM home_sales
-    WHERE price >= 350000
-    GROUP BY view
-    """).show()
+  FROM home_sales
+  WHERE price >= 350000
+  GROUP BY view
+  """).show()
 
 ```
 
