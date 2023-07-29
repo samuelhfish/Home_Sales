@@ -3,6 +3,9 @@ Exercise with home sales data using Spark to create temporary views, partition d
 
 Complete code, notebook and results are located in the "Notebooks" folder.
 
+Work was done on Google Colab. That notebook can be found here:
+https://drive.google.com/file/d/1XTfRPODIEg1SPiq5f9iW9gwjlzWb27Xz/view?usp=sharing
+
 ## Results
 
 ```python
@@ -38,7 +41,6 @@ spark.sql("""
   GROUP BY date_built
   """).show()
 ```
-
 ```
 +----------+-------------+
 |date_built|average_price|
@@ -65,7 +67,9 @@ spark.sql("""
   WHERE bedrooms = 3 AND bathrooms = 3 AND floors = 2 AND sqft_living >= 2000
   GROUP BY date_built
   """).show()
+```
 
+```
 +----------+-------------+
 |date_built|average_price|
 +----------+-------------+
@@ -91,7 +95,13 @@ spark.sql("""
     view,
     ROUND(AVG(price),2) AS average_price
   FROM home_sales
+  WHERE price >= 350000
+  GROUP BY view
+  """).show()
 
+print("--- %s seconds ---" % (time.time() - start_time))
+```
+```
 +----+-------------+
 |view|average_price|
 +----+-------------+
@@ -128,11 +138,17 @@ only showing top 20 rows
 start_time = time.time()
 
 spark.sql("""
-  SELECT
+    SELECT
     view,
     ROUND(AVG(price),2) AS average_price
-  FROM home_sales
+    FROM home_sales
+    WHERE price >= 350000
+    GROUP BY view
+    """).show()
 
+```
+
+```
 +----+-------------+
 |view|average_price|
 +----+-------------+
@@ -173,7 +189,13 @@ spark.sql("""
   SELECT
     view,
     ROUND(AVG(price),2) AS average_price
+  FROM p_home_sales
+  WHERE price >= 350000
+  GROUP BY view
+  """).show()
+```
 
+```
 +----+-------------+
 |view|average_price|
 +----+-------------+
@@ -203,4 +225,4 @@ only showing top 20 rows
 --- 0.3803226947784424 seconds ---
 ```
 ## Analysis
-While the data set wasn't extremely large, by the end of the exercise we can see the time saved by usingthe cached table and the parquet formatted table. The required time  goes down from .74 to .63 and finally .38 seconds with the parquet formatted table.
+While the data set wasn't extremely large, by the end of the exercise we can see the time saved by using the cached table and the parquet formatted table. The required time  goes down from .74 to .63 and finally .38 seconds with the parquet formatted table.
