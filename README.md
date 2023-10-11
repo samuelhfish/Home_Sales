@@ -8,7 +8,7 @@ https://drive.google.com/file/d/1XTfRPODIEg1SPiq5f9iW9gwjlzWb27Xz/view?usp=shari
 
 Note: Make sure you are using the latest version of spark 3.x from http://www.apache.org/dist/spark/
 
-<img width="928" alt="Screenshot 2023-10-06 at 12 40 42 PM" src="https://github.com/samuelhfish/Home_Sales/assets/125224990/b48f2fcb-4962-4ab7-9aaf-5614b9c25654"><br>
+<![Screenshot 2023-10-11 at 1 31 22 PM](https://github.com/samuelhfish/Home_Sales/assets/125224990/8ac074d5-0305-4f62-9113-b36fc0c550bf)><br>
 
 Full instructions and code accessible via Google Colab link above.
 
